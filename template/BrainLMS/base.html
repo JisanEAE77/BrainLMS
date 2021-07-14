@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en"
+      dir="ltr">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible"
+              content="IE=edge">
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>{% block title %}{% endblock %}</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CRoboto:400,500%7CExo+2:600&display=swap"
+              rel="stylesheet">
+
+        <!-- Preloader -->
+        <link type="text/css"
+              href="{% static 'assets/public/vendor/spinkit.css' %}"
+              rel="stylesheet">
+
+        <!-- Perfect Scrollbar -->
+        <link type="text/css"
+              href="{% static 'assets/public/vendor/perfect-scrollbar.css' %}"
+              rel="stylesheet">
+
+        <!-- Material Design Icons -->
+        <link type="text/css"
+              href="{% static 'assets/public/css/material-icons.css' %}"
+              rel="stylesheet">
+
+        <!-- Font Awesome Icons -->
+        <link type="text/css"
+              href="{% static 'assets/public/css/fontawesome.css' %}"
+              rel="stylesheet">
+
+        <!-- Preloader -->
+        <link type="text/css"
+              href="{% static 'assets/public/css/preloader.css' %}"
+              rel="stylesheet">
+
+        <!-- App CSS -->
+        <link type="text/css"
+              href="{% static 'assets/public/css/app.css' %}"
+              rel="stylesheet">
+
+        {% block links %} {% endblock%}
+
+    </head>
+
+    <body class="layout-sticky-subnav layout-default ">
+
+        <div class="preloader">
+            <div class="sk-chase">
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+            </div>
+
+            <!-- <div class="sk-bounce">
+    <div class="sk-bounce-dot"></div>
+    <div class="sk-bounce-dot"></div>
+  </div> -->
+
+            <!-- More spinner examples at https://github.com/tobiasahlin/SpinKit/blob/master/examples.html -->
+        </div>
+
+        {% block body %}
+
+        {% endblock %}
+
+<!-- jQuery -->
+        <script src="{% static 'assets/public/vendor/jquery.min.js' %}"></script>
+
+        <!-- Bootstrap -->
+        <script src="{% static 'assets/public/vendor/popper.min.js' %}"></script>
+        <script src="{% static 'assets/public/vendor/bootstrap.min.js' %}"></script>
+
+        <!-- Perfect Scrollbar -->
+        <script src="{% static 'assets/public/vendor/perfect-scrollbar.min.js' %}"></script>
+
+        <!-- DOM Factory -->
+        <script src="{% static 'assets/public/vendor/dom-factory.js' %}"></script>
+
+        <!-- MDK -->
+        <script src="{% static 'assets/public/vendor/material-design-kit.js' %}"></script>
+
+        <!-- App JS -->
+        <script src="{% static 'assets/public/js/app.js' %}"></script>
+
+        <!-- Preloader -->
+        <script src="{% static 'assets/public/js/preloader.js' %}"></script>
+
+        <script>
+            (function() {
+                'use strict';
+                var headerNode = document.querySelector('.mdk-header')
+                var layoutNode = document.querySelector('.mdk-header-layout')
+                var componentNode = layoutNode ? layoutNode : headerNode
+                componentNode.addEventListener('domfactory-component-upgraded', function() {
+                    headerNode.mdkHeader.eventTarget.addEventListener('scroll', function() {
+                        var progress = headerNode.mdkHeader.getScrollState().progress
+                        var navbarNode = headerNode.querySelector('#default-navbar')
+                        navbarNode.classList.toggle('bg-transparent', progress <= 0.2)
+                    })
+                })
+            })()
+        </script>
+
+        {% block script %} {% endblock %}
+
+    </body>
+
+</html>

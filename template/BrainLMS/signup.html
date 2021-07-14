@@ -1,0 +1,196 @@
+{% extends 'BrainLMS/base.html' %}
+
+{% block title %}Sign Up{% endblock %}
+{% block body %}
+{% load static %}
+        <!-- Header Layout -->
+        <div class="mdk-header-layout js-mdk-header-layout">
+
+            <!-- Header -->
+
+            {% include 'BrainLMS/header2.html' %}
+
+            <!-- // END Header -->
+
+            <!-- Header Layout Content -->
+            <div class="mdk-header-layout__content page-content ">
+
+                <div class="page-section container page__container">
+                    <div class="col-lg-10 p-0 mx-auto">
+                        <div class="row">
+                            <div class="col-md-6 mb-24pt mb-md-0">
+                                <form method="POST">
+                                {% csrf_token %}
+                                    <div class="form-group">
+                                        <label class="form-label"
+                                               for="fname">Your First Name:</label>
+                                        <input id="fname"
+                                               type="text"
+                                               class="form-control"
+                                               placeholder="Your First Name ..."
+                                               name="first_name"
+                                               required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label"
+                                               for="lname">Your Last Name:</label>
+                                        <input id="lname"
+                                               type="text"
+                                               class="form-control"
+                                               placeholder="Your Last Name ..."
+                                               name="last_name"
+                                               required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label"
+                                               for="email">Your E-mail:</label>
+                                        <input id="email"
+                                               type="email"
+                                               class="form-control"
+                                               placeholder="Your E-mail Address ..."
+                                               name="email"
+                                               required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label"
+                                               for="username">Choose Username:</label>
+                                        <input id="username"
+                                               type="text"
+                                               class="form-control"
+                                               placeholder="Choose a unique username ..."
+                                               name="username"
+                                               required>
+                                    </div>
+                                    <div class="form-group mb-24pt">
+                                        <label class="form-label"
+                                               for="password">Password:</label>
+                                        <input id="password"
+                                               type="password"
+                                               class="form-control"
+                                               placeholder="Your password ..."
+                                               name="password"
+                                               required>
+                                    </div>
+                                    <div class="form-group mb-24pt">
+                                        <label class="form-label"
+                                               for="cpassword">Confirm Password:</label>
+                                        <input id="cpassword"
+                                               type="password"
+                                               class="form-control"
+                                               placeholder="Your password ..."
+                                               name="cpassword"
+                                               required>
+                                    </div>
+                                    <div class="form-group mb-24pt" data-select2-id="32">
+                                        <label class="form-label"
+                                        for="select01">Join As:</label>
+                                        <select id="select01"
+                                        data-toggle="select"
+                                        class="form-control select2-hidden-accessible"
+                                        data-select2-id="select01"
+                                        tabindex="-1"
+                                        aria-hidden="true"
+                                        name="user_type"
+                                        required>
+                                            <option selected="" data-select2-id="2" value="student">Student</option>
+                                            <option data-select2-id="34" value="instructor">Instructor</option>
+                                            <option data-select2-id="33" value="mentor">Mentor</option>
+                                        </select>
+                                    </div>
+                                    <div class="text-center">
+                                        <input type="submit" class="btn btn-primary" value="Create Account">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card mb-0">
+                                    <div class="card-body">
+                                        <h5>Sign-Up Direction:</h5>
+
+                                        <div class="alert alert-soft-danger">
+                                            <div class="d-flex flex-wrap align-items-start">
+                                                <div class="mr-8pt">
+                                                    <i class="material-icons">error</i>
+                                                </div>
+                                                <div class="flex"
+                                                     style="min-width: 180px">
+                                                    <small class="text-100">
+                                                        Please choose an unique <strong>Username.</strong>
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="alert alert-soft-success">
+                                            <div class="d-flex flex-wrap align-items-start">
+                                                <div class="mr-8pt">
+                                                    <i class="material-icons">check</i>
+                                                </div>
+                                                <div class="flex"
+                                                     style="min-width: 180px">
+                                                    <small class="text-100">
+                                                        Please select an user type to join <strong>For individuals.</strong>
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="alert alert-soft-warning">
+                                            <div class="d-flex flex-wrap align-items-start">
+                                                <div class="mr-8pt">
+                                                    <i class="material-icons"><span class="material-icons-outlined">
+priority_high
+</span></i>
+                                                </div>
+                                                <div class="flex"
+                                                     style="min-width: 180px">
+                                                    <small class="text-100">
+                                                        Please choose a <strong>Strong Password.</strong>
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox"
+                                                   class="custom-control-input"
+                                                   checked
+                                                   id="topic-all">
+                                            <label class="custom-control-label">Terms and conditions</label>
+                                            <small class="form-text text-muted">By checking here and continuing, I agree to the Luma Terms of Use</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="page-separator justify-content-center m-0">
+                    <div class="page-separator__text">Already Have An Account?</div>
+                </div>
+                <div class="page-section text-center">
+                    <div class="container page__container text-center">
+                        <a href="/login/"
+                           class="btn btn-info btn-block-xs">Login</a>
+                       
+                    </div>
+                </div>
+
+            </div>
+            <!-- // END Header Layout Content -->
+
+            <!-- Footer -->
+
+            {% include 'BrainLMS/footer.html' %}
+
+            <!-- // END Footer -->
+
+        </div>
+        <!-- // END Header Layout -->
+
+        <!-- Drawer -->
+
+        {% include 'BrainLMS/drawer.html' %}
+
+        <!-- // END Drawer -->
+
+{% endblock %}

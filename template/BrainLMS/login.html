@@ -1,0 +1,97 @@
+{% extends 'BrainLMS/base.html' %}
+
+{% block title %}Login{% endblock %}
+{% block body %}
+{% load static %}
+        <!-- Header Layout -->
+        <div class="mdk-header-layout js-mdk-header-layout">
+
+            <!-- Header -->
+
+            {% include 'BrainLMS/header2.html' %}
+
+            <!-- // END Header -->
+
+            <!-- Header Layout Content -->
+            <div class="mdk-header-layout__content page-content ">
+
+                <div class="pt-32pt pt-sm-64pt pb-32pt">
+                    <div class="container page__container">
+                        <form method="POST"
+                              class="col-md-5 p-0 mx-auto">
+                        {% csrf_token %}
+                            <div class="form-group">
+                                <label class="form-label"
+                                       for="email">Email:</label>
+                                <input id="email"
+                                       type="email"
+                                       class="form-control"
+                                       placeholder="Your email address ..."
+                                       name="email"
+                                       required>
+                            </div>
+                             <div class="form-group">
+                                <label class="form-label"
+                                       for="username">Username:</label>
+                                <input id="username"
+                                       type="text"
+                                       class="form-control"
+                                       placeholder="Your email address ..."
+                                       name="username"
+                                       required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label"
+                                       for="password">Password:</label>
+                                <input id="password"
+                                       type="password"
+                                       class="form-control"
+                                       placeholder="Your first and last name ..."
+                                       name="password"
+                                       required>
+                                
+                            </div>
+                            <div class="text-center">
+                                <input type="submit" class="btn btn-primary" value="Login">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="page-separator justify-content-center m-0">
+                    <div class="page-separator__text">Frogot Your Password?</div>
+                </div>
+                <div class="bg-body pt-32pt pb-32pt pb-md-64pt text-center">
+                    <div class="container page__container text-center">
+                        <a href="index.html"
+                           class="btn btn-danger btn-block-xs">Recover Password</a>
+                    </div>
+                </div>
+                <div class="page-separator justify-content-center m-0">
+                    <div class="page-separator__text">Dont Have An Account?</div>
+                </div>
+                <div class="bg-body pt-32pt pb-32pt pb-md-64pt text-center">
+                    <div class="container page__container text-center">
+                        <a href="/sign-up/"
+                           class="btn btn-info btn-block-xs">Create An Account</a>
+                    </div>
+                </div>
+
+            </div>
+            <!-- // END Header Layout Content -->
+
+            <!-- Footer -->
+
+            {% include 'BrainLMS/footer.html' %}
+
+            <!-- // END Footer -->
+
+        </div>
+        <!-- // END Header Layout -->
+
+        <!-- Drawer -->
+
+        {% include 'BrainLMS/drawer.html' %}
+
+        <!-- // END Drawer -->
+
+{% endblock %}

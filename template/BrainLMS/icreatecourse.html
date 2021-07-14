@@ -1,0 +1,248 @@
+{% extends 'BrainLMS/base.html' %}
+{% load static %}
+
+{% block title %}Create Course{% endblock %}
+{% block links %}
+<!-- Quill Theme -->
+    <link type="text/css"
+            href="{% static 'assets/public/css/quill.css' %}"
+            rel="stylesheet">
+    <!-- Select2 -->
+    <link type="text/css"
+            href="{% static 'assets/public/vendor/select2/select2.min.css' %}"
+            rel="stylesheet">
+    <link type="text/css"
+            href="{% static 'assets/public/css/select2.css' %}"
+            rel="stylesheet">
+{% endblock%}
+{% block body %}
+{% load static %}
+        <!-- Header Layout -->
+        <div class="mdk-header-layout js-mdk-header-layout">
+
+            <!-- Header -->
+
+            {% include 'BrainLMS/header2.html' %}
+
+            <!-- // END Header -->
+
+            <!-- Header Layout Content -->
+            <div class="mdk-header-layout__content page-content ">
+                {% if error %}
+                <div class="d-flex flex-wrap align-items-start">
+                    <div class="mr-8pt">
+                        <i class="material-icons">access_time</i>
+                    </div>
+                    <div class="flex"
+                            style="min-width: 180px">
+                        <small class="text-black-100">
+                            <strong>Success - </strong> A simple success alert - check it out!
+                        </small>
+                    </div>
+                </div>
+                {% endif %}
+                <div class="pt-32pt">
+                    <div class="container page__container d-flex flex-column flex-md-row align-items-center text-center text-sm-left">
+                        <div class="flex d-flex flex-column flex-sm-row align-items-center">
+
+                            <div class="mb-24pt mb-sm-0 mr-sm-24pt">
+                                <h2 class="mb-0">Create A New Course</h2>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <form method="POST">
+                {% csrf_token %}
+                <div class="page-section border-bottom-2">
+                    <div class="container page__container">
+
+                        <div class="row">
+                            <div class="col-md-8">
+
+                                <label class="form-label">Subject</label>
+                                <div class="form-group mb-24pt">
+                                    <select id="select03"
+                                            data-toggle="select"
+                                            class="form-control"
+                                            name="subjectName">
+                                        {% for subject in subjects %}
+                                        {% if forloop.counter == 1 %}
+                                        <option selected="" value="{{subject.name}}">{{subject.name}}</option>
+                                        {% else %}
+                                        <option value="{{subject.name}}">{{subject.name}}</option>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </select>
+                                    <small class="form-text text-muted">If the subject is not listed here, <a href="">click here to enlist a new subject.</a></small>
+                                </div>
+
+                                <div class="form-group mb-32pt">
+                                    <label class="form-label">Description</label>
+                                    <textarea class="form-control" rows="3" placeholder="Course description" name="courseDescription" hidden></textarea> 
+                                    <div style="height: 515px;"
+                                         class="mb-0"
+                                         data-toggle="quill"
+                                         data-quill-placeholder="Course description"
+                                         id="codeEditor">
+                                    </div>
+                                    <small class="form-text text-muted">Describe this course withing 100000 character.</small>
+                                </div>
+
+                            </div>
+                            <div class="col-md-4">
+
+                                
+
+                                <div class="page-separator">
+                                    <div class="page-separator__text">Thumbnail</div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-body">
+                                        <label class="form-label">Upload Thumbnail</label>
+                                        <div class="form-group m-0">
+                                            <div class="custom-file">
+                                                <input type="file"
+                                                    id="file"
+                                                    class="custom-file-input" name="upThumbnail" onchange="showThumbnail(this)">
+                                                <label id="showThumbnail" for="file"
+                                                    class="custom-file-label">Choose file</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="page-separator">
+                                    <div class="page-separator__text">Options</div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label class="form-label">Subscription Type</label>
+                                            <select id="select02"
+                                                    data-toggle="select"
+                                                    class="form-control"
+                                                    name="sType">
+                                                {% for sType in sTypes %}
+                                                {% if forloop.counter == 1 %}
+                                                <option selected="" value="{{sType.slug}}">{{sType.slug}}</option>
+                                                {% else %}
+                                                <option value="{{sType.slug}}">{{sType.slug}}</option>
+                                                {% endif %}
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Class</label>
+                                            <select id="select01"
+                                                    data-toggle="select"
+                                                    class="form-control"
+                                                    name="className">
+                                                {% for class in classes %}
+                                                {% if forloop.counter == 1 %}
+                                                <option selected="" value="{{class.name}}">{{class.name}}</option>
+                                                {% else %}
+                                                <option value="{{class.name}}">{{class.name}}</option>
+                                                {% endif %}
+                                                {% endfor %}
+                                            </select>
+                                            <small class="form-text text-muted">If the class is not listed here, <a href="">click here to enlist a new class.</a></small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Hour/Day</label>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="input-group form-inline">
+                                                       
+                                                        <input type="number"
+                                                               class="form-control"
+                                                               value="" name="hpd">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Fee</label>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="input-group form-inline">
+                                                        <span class="input-group-prepend"><span class="input-group-text">$</span></span>
+                                                        <input type="number"
+                                                               class="form-control"
+                                                               value="" name="fee">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                    
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header text-center">
+                                        <button
+                                           class="btn btn-accent" onclick="submitForm()">Create Course</button>
+                                    </div>
+                            
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <input type="submit" id="formSubmit" hidden>
+                </form>
+
+            </div>
+            <!-- // END Header Layout Content -->
+
+        <!-- Footer -->
+
+            {% include 'BrainLMS/footer.html' %}
+
+            <!-- // END Footer -->
+
+        </div>
+        <!-- // END Header Layout -->
+
+        <!-- Drawer -->
+
+        {% include 'BrainLMS/drawer.html' %}
+
+        <!-- // END Drawer -->
+        {% block script %}
+        
+        <!-- Quill -->
+        <script src="{% static 'assets/public/vendor/quill.min.js' %}"></script>
+        <script src="{% static 'assets/public/js/quill.js' %}"></script>
+        <!-- Select2 -->
+        <script src="{% static 'assets/public/vendor/select2/select2.min.js' %}"></script>
+        <script src="{% static 'assets/public/js/select2.js' %}"></script>
+
+        <script>
+            function showThumbnail(e){
+                image = document.getElementById('showThumbnail');
+                image.innerHTML = e.value;
+            }
+
+            function submitForm(){
+                editor = document.getElementById("codeEditor");
+                textarea = document.getElementById("courseDescription");
+                text = editor.innerHTML;
+                textarea.value = text;
+                submit = document.getElementById("formSubmit");
+                submit.click();
+            }
+        </script>
+
+        {% endblock %}
+
+{% endblock %}
